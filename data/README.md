@@ -13,7 +13,9 @@ These subsampled datasets are used consistently across all experiments to ensure
 fair comparison between different models and circuit architectures.
 
 
-Each subfolder contains experimental content required for different dimensions. 
+All required experimental content can be generated via `src/
+Preprocessing
+/README.md`. The generated content includes:
 Taking `D16` as an example (`D8` and `D32` follow the same principle), the contents include:
 
 `y_labels.npy`: Labels corresponding to each row of `Zdae_encoder`.pt: Weights for the DAE encoder
