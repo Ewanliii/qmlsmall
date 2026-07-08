@@ -1,56 +1,73 @@
-# Quantum Machine Learning for Small-Sample Fraud Detection
+# Quantum Machine Learning for Small-Sample Financial Fraud Detection
 
-Code and data for the paper ：Exploring the Role of Structural Induction Bias in Variational Quantum Circuits under Imbalanced Low-Data Conditions
+This repository contains the implementation for my first-author manuscript:
 
-> **Title:** Exploring the Role of Structural Induction Bias in Variational Quantum Circuits under Imbalanced Low-Data Conditions
-> 
-> **Author:** Jiahua Li
-> 
-> **Status:** Under review / Preprint
+**Exploring the Role of Structural Inductive Bias in Variational Quantum Circuits under Imbalanced Low-Data Conditions**
 
-The project investigates the performance of variational quantum circuits (VQCs)
-under small-sample, high-dimensional settings, and compares them with classical
-machine learning baselines.
+**Author:** Jiahua Li  
+**Status:** Manuscript submitted to *Quantum Machine Intelligence*, 2026
+
+## Overview
+
+This project studies how variational quantum circuit (VQC) design choices affect model behavior under small-sample and class-imbalanced financial fraud detection settings. The experiments compare multiple VQC circuit variants against classical machine learning baselines under unified training budgets and fixed evaluation protocols.
+
+The project is intended as a research code sample. It demonstrates:
+
+- controlled experimental design under limited-data settings;
+- baseline benchmarking against Logistic Regression, Random Forest, and MLP;
+- VQC implementation and evaluation with PennyLane;
+- analysis of architecture choices, entanglement structure, readout design, and generalization behavior;
+- reproducible organization of code, notebooks, figures, and data instructions.
+
+## Research Question
+
+Under highly sample-limited and class-imbalanced conditions, do circuit-level structural choices in VQC models affect generalization more clearly than simply increasing circuit depth or training effort?
 
 ## Repository Structure
-- `src/` : Reproducible implementation (preprocessing, ML, QML)
-- `data/` : Dataset descriptions and processed small-sample datasets
-- `notebook/` : Exploratory and analysis notebooks
-- `figures/` : figures used in the paper
 
+```text
+.
+├── data/                 # Data description and small processed artifacts
+├── figures/              # Main and appendix figures used in the manuscript
+├── notebook/             # Exploratory notebooks and plotting notebooks
+├── src/
+│   ├── preprocessing/    # DAE training and latent feature extraction
+│   ├── classical_ml/     # Logistic Regression, Random Forest, and MLP baselines
+│   └── qml/              # VQC variants and evaluation scripts
+├── .gitignore
+└── README.md
+```
 
+## Workflow
 
-## Workflow Overview
+1. **Preprocessing**
+   - Download the IEEE-CIS Fraud Detection dataset from Kaggle.
+   - Train a denoising autoencoder (DAE) to produce latent feature representations.
 
-1. **Preprocessing**  
-   Train a denoising autoencoder (DAE) to obtain latent representations.
+2. **Small-sample construction**
+   - Construct fixed small datasets such as `N=100` and `N=200`.
+   - Use the same sampled data across classical and quantum models for fair comparison.
 
-2. **Small-sample construction**  
-   Construct fixed small datasets (e.g., N=100/200) for fair comparison.
+3. **Classical baselines**
+   - Evaluate Logistic Regression, Random Forest, and MLP under the same train/test protocol.
 
-3. **Classical baselines**  
-   Evaluate Logistic Regression, Random Forest, and MLP.
+4. **Quantum model evaluation**
+   - Evaluate VQC variants under repeated stratified cross-validation.
+   - Compare circuit variants with different rotation, entanglement, embedding, and readout choices.
 
-4. **Quantum models**  
-   Evaluate VQC variants under repeated stratified cross-validation.
-
-## Reproducibility
-
-All reproducible experiments are implemented as standalone Python scripts under `src/`.
-Jupyter notebooks are provided for transparency and visualization purposes.
+5. **Analysis and visualization**
+   - Generate AUC summaries and figures for main experiments and appendix analyses.
 
 ## Data Availability
 
-The original IEEE-CIS Fraud Detection dataset cannot be redistributed due to license
-restrictions. Please download the dataset from Kaggle and follow the preprocessing
-instructions provided in `data/`.
+The original IEEE-CIS Fraud Detection dataset cannot be redistributed due to Kaggle licensing restrictions. Please download it from:
 
-## Citation
+https://www.kaggle.com/competitions/ieee-fraud-detection/data
 
-If you use this code, please cite the corresponding paper.
+Large generated artifacts such as raw CSV files, full latent matrices, model weights, and local outputs are intentionally excluded from GitHub. See [`data/README.md`](data/README.md) for details.
 
+## Notes for Reviewers
 
+This repository is organized as a coding sample for PhD applications. The code reflects an independent research project from problem formulation and experiment design to implementation, evaluation, manuscript preparation, and repository organization.
 
-```python
-
-```
+The project is not presented as a production software package. It is a research repository designed to make the experimental workflow, scripts, and results transparent.
