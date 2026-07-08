@@ -1,28 +1,23 @@
-# Source Code (`src/`)
+# Source Code
 
-This directory contains the reproducible implementation used in the paper.
+This directory contains the main scripts used in the project.
 
 ## Structure
 
-- `preprocessing/`  
-  Scripts for data preprocessing and representation learning (e.g., DAE training and latent feature extraction).
+- `preprocessing/`
+  - Denoising autoencoder training and latent feature extraction.
 
-- `classical_ml/`  
-  Baseline classical machine learning experiments (Logistic Regression, Random Forest, MLP).
+- `classical_ml/`
+  - Classical machine learning baselines, including Logistic Regression, Random Forest, and MLP.
 
-- `qml/`  
-  Quantum machine learning experiments (VQC variants and evaluation).
+- `qml/`
+  - Variational quantum circuit experiments and architecture variants.
 
-## How to run
+## General Workflow
 
-Each submodule provides its own `README.md` with example commands. In general, the workflow is:
-
-1. Run preprocessing (DAE) to obtain latent features / processed datasets.
+1. Run preprocessing to obtain latent representations and fixed small-sample datasets.
 2. Run classical baselines on the same processed datasets.
 3. Run VQC experiments on the same processed datasets.
+4. Compare model behavior under unified evaluation settings.
 
-
-
-```python
-
-```
+Each subdirectory contains a short README with its role in the workflow.
