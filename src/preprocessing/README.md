@@ -2,29 +2,24 @@
 
 This folder contains scripts for preprocessing and representation learning.
 
-## Scripts
+## Script
 
-- `DAE_trainer.py`  
-  Trains a denoising autoencoder (DAE) on the numeric features and exports latent representations
-  and preprocessing artifacts (e.g., imputer/scaler).
+- `DAE_trainer.py`
+  - Trains a denoising autoencoder (DAE) on numeric transaction features.
+  - Exports latent representations and preprocessing artifacts.
 
-## Expected inputs
+## Expected Input
 
-- `train_transaction.csv` from the IEEE-CIS Fraud Detection dataset (Kaggle).  
-  The raw dataset is not included in this repository due to license restrictions.
+- `train_transaction.csv` from the IEEE-CIS Fraud Detection dataset.
 
-## Outputs
+The raw dataset is not included in this repository due to license restrictions.
 
-The script produces latent representations and related artifacts locally (not tracked by Git),
-which can then be used to generate small experimental datasets.
+## Generated Outputs
+
+Generated artifacts are stored locally and ignored by Git. They may include latent matrices, trained encoder weights, imputation artifacts, scalers, and fixed small-sample `.npz` datasets.
 
 ## Example
 
 ```bash
 python src/preprocessing/DAE_trainer.py --csv_path /path/to/train_transaction.csv --latent_dim 32 --out_dir outputs/dae_d32
-
-
-
-```python
-
 ```
