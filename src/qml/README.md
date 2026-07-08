@@ -1,18 +1,17 @@
-# Quantum ML (VQC Experiments)
+# Quantum ML Experiments
 
 This folder contains variational quantum circuit (VQC) experiments.
 
 ## Script
 
-- `VQC_work.py`  
-  Runs VQC variants under repeated stratified cross-validation and reports AUC.
+- `VQC_work.py`
+  - Runs VQC variants under repeated stratified cross-validation.
+  - Reports AUC summaries and optionally saves per-run results.
 
 ## Inputs
 
-- A fixed small dataset `.npz` (recommended): `X` and `y`.
+Recommended input:
 
+- a fixed small dataset `.npz` containing `X` and `y`.
 
-
-```python
-
-```
+The experiments are designed to compare circuit-level choices under controlled data and training settings.
